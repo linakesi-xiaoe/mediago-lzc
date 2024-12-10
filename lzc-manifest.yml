@@ -1,0 +1,22 @@
+lzc-sdk-version: 0.1
+name: MediaGo桌面版本
+package: iamxiaoe.lzcapp.mediago-desktop
+version: 0.0.1
+description:
+license: https://choosealicense.com/licenses/mit/
+homepage: https://github.com/caorushizi/mediago
+author: caorushizi
+application:
+  subdomain: mediago-desktop
+  routes:
+    - /=http://mediago.iamxiaoe.lzcapp.mediago-desktop.lzcapp:6901
+  depends_on:
+    - mediago
+  multi_instance: true # 是否启用多实例
+  background_task: true #是否存在后台任务，若存在则系统不会对此app进行主动休眠等操作
+
+services:
+  mediago:
+    image: registry.lazycat.cloud/mediago:0.1.0
+    binds:
+      - /lzcapp/run/home/mediago/:/home/lazycat/.config/mediago

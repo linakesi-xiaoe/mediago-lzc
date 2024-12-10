@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MediaGo
+Comment=
+Exec=/opt/mediago/mediago --no-sandbox --disable-dev-shm-usage
+Icon=mediago
+Path=
+Terminal=false
+StartupNotify=false
