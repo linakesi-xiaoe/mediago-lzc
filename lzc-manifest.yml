@@ -1,7 +1,7 @@
 lzc-sdk-version: 0.1
 name: MediaGo桌面版本
 package: iamxiaoe.lzcapp.mediago-desktop
-version: 0.0.1
+version: 0.0.2
 description:
 license: https://choosealicense.com/licenses/mit/
 homepage: https://github.com/caorushizi/mediago
@@ -17,6 +17,6 @@ application:
 
 services:
   mediago:
-    image: registry.lazycat.cloud/mediago:0.1.0
+    image: registry.lazycat.cloud/mediago:0.2.0
     binds:
       - /lzcapp/run/home/mediago/:/home/lazycat/.config/mediago

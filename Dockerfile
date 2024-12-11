@@ -10,11 +10,16 @@ RUN sudo apt-get update;  sudo apt-get install -y wget
 RUN wget https://static.ziying.site/mediago/mediago-setup-linux-amd64-3.0.0.deb; sudo dpkg -i mediago-setup-linux-amd64-3.0.0.deb; rm *.deb;
 RUN sed -i 's/kasm_user/lazycat/g' /dockerstartup/vnc_startup.sh
 RUN sed -i '5i sudo chown -R lazycat:kasm-user /home/lazycat/' /dockerstartup/kasm_default_profile.sh
+RUN sed -i '6i sudo chown -R lazycat:kasm-user /lzcapp/var' /dockerstartup/kasm_default_profile.sh
+RUN sed -i '7i mv /home/lazycat/mediago-config.json /home/lazycat/.config/mediago/config.json' /dockerstartup/kasm_default_profile.sh
+
 RUN cat /dockerstartup/kasm_default_profile.sh
 COPY --chown=lazycat:kasm-user kasmvnc.yaml /home/lazycat/.vnc/kasmvnc.yaml
 COPY --chown=lazycat:kasm-user desktop/mediago.desktop /home/lazycat/Desktop/
-
 COPY --chown=lazycat:kasm-user desktop/mediago.desktop /home/lazycat/.config/autostart/
+COPY --chown=lazycat:kasm-user desktop/startup-script.desktop /home/lazycat/.config/autostart/
+COPY --chown=lazycat:kasm-user startup-script.sh /home/lazycat/.config/autostart/
+COPY --chown=lazycat:kasm-user mediago-config.json /home/lazycat/mediago-config.json
 
 RUN chmod +x /home/lazycat/Desktop/*.desktop
 RUN chmod +x /home/lazycat/.config/autostart/*.desktop
